@@ -8,15 +8,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class CommentController {
 
+    var commonList: MutableList<CommentModel> = mutableListOf()
+
     @GetMapping("/allComments")
     fun allComments(): MutableList<CommentModel> {
-        // ... //
-        return mutableListOf()
+
+        return commonList
     }
 
     @PostMapping("/addComment")
     fun addComment(@RequestBody comment: CommentModel): ResponseEntity<Any> {
-        // ... //
+        var receiveAuthor = comment.author
+        var receiveComment = comment.comment
+        if(receiveAuthor.isNullOrBlank() || receiveComment.isNullOrBlank() || receiveAuthor.length > 100 || receiveComment.length > 1000){
+            return ResponseEntity(HttpStatus.BAD_REQUEST)
+        }
+        commonList.add(comment)
         return ResponseEntity(HttpStatus.ACCEPTED)
     }
 }
