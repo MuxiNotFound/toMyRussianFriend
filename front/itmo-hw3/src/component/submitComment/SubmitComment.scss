@@ -1,0 +1,19 @@
+.form-outer {
+    box-sizing: border-box;
+    padding: 30px 16px;
+    width: 100%;
+}
+.form-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.MuiTextField-root {
+    margin-bottom: 20px !important;
+}
+.MuiTextField-root:first-child {
+    width: 200px;
+}
+.MuiTextField-root:last-child {
+    width: 90%;
+}
